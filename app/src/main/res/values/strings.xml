@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BlogPhoto</string>
+    <string name="login_logo">login logo</string>
+    <string name="your_email">Your Email</string>
+    <string name="password">password</string>
+    <string name="need_a_new_account">Need a new Account ?</string>
+    <string name="login_to_account">Login to Account</string>
 </resources>
