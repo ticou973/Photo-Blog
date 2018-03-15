@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setTitle("Photo Blog");
 
-
-
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -35,24 +35,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        mAuth = FirebaseAuth.getInstance();
+
 
         mCurrentUser = mAuth.getCurrentUser();
 
 
         if (mCurrentUser == null) {
 
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+            sendToLogin();
 
 
         }else {
 
-
-
-
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,6 +60,44 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
 
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()){
+
+            case R.id.action_logout_btn :
+
+                logOut();
+
+                return true;
+
+                default:
+                    return false;
+
+
+
+        }
+    }
+
+    private void logOut() {
+
+
+        mAuth.signOut();
+        sendToLogin();
+
+
+    }
+
+
+    private void sendToLogin() {
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
 
     }
 }
