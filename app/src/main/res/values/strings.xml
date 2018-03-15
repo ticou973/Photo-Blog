@@ -8,4 +8,9 @@
     <string name="action_logout_btn">Logout</string>
     <string name="account_settings_btn">Account Settings</string>
     <string name="action_search">Search</string>
+    <string name="reg_logo">Create a new account</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_account">Already have an Account ?</string>
+    <string name="password_confirm_doesnt_work">Confirm password and confirm password doesn\'t match !</string>
 </resources>

@@ -8,7 +8,7 @@
     tools:context="com.example.thierrycouilleault.blogphoto.LoginActivity">
 
     <ImageView
-        android:id="@+id/login_page_logo"
+        android:id="@+id/reg_page_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/login_logo" />
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/reg_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -39,10 +39,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_page_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_page_logo" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/reg_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -58,10 +58,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_email" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/reg_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -74,7 +74,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_password" />
 
     <Button
         android:id="@+id/login_reg_btn"
@@ -95,7 +95,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/reg_btn"
         app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
