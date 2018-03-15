@@ -5,4 +5,7 @@
     <string name="password">password</string>
     <string name="need_a_new_account">Need a new Account ?</string>
     <string name="login_to_account">Login to Account</string>
+    <string name="action_logout_btn">Logout</string>
+    <string name="account_settings_btn">Account Settings</string>
+    <string name="action_search">Search</string>
 </resources>
