@@ -13,4 +13,6 @@
     <string name="create_account">Create Account</string>
     <string name="already_account">Already have an Account ?</string>
     <string name="password_confirm_doesnt_work">Confirm password and confirm password doesn\'t match !</string>
+    <string name="name">Name</string>
+    <string name="save_account_settings">Save Account Settings</string>
 </resources>
