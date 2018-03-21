@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
 
+            case R.id.action_settings_btn :
+
+                Intent settingsIntent = new Intent(MainActivity.this, SetUpActivity.class);
+                startActivity(settingsIntent);
+                return true;
+
                 default:
                     return false;
 
