@@ -5,16 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
+    private FirebaseFirestore firebaseFirestore;
 
     private android.support.v7.widget.Toolbar mainToolbar;
+    private Button addPostBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setTitle("Photo Blog");
 
+        addPostBtn = findViewById(R.id.add_post_btn);
+        addPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+                startActivity(newPostIntent);
+
+
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
     }
 
@@ -46,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }else {
+
+
 
         }
     }

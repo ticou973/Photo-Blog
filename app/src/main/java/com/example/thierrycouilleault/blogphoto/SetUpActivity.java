@@ -139,10 +139,12 @@ public class SetUpActivity extends AppCompatActivity {
 
                 final String userName = settingsName.getText().toString();
 
-                if (isChanged) {
+                if (!TextUtils.isEmpty(userName) && mainImageURI != null) {
 
+                setUpProgress.setVisibility(View.VISIBLE);
 
-                    if (!TextUtils.isEmpty(userName) && mainImageURI != null) {
+                    if (isChanged) {
+
 
                         Toast.makeText(SetUpActivity.this, userName, Toast.LENGTH_SHORT).show();
 
@@ -175,12 +177,12 @@ public class SetUpActivity extends AppCompatActivity {
                         });
 
 
+                    }else{
+
+                        storeFireStore(null, userName);
+
+
                     }
-
-
-                }else{
-
-                    storeFireStore(null, userName);
 
 
                 }

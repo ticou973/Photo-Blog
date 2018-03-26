@@ -15,4 +15,8 @@
     <string name="password_confirm_doesnt_work">Confirm password and confirm password doesn\'t match !</string>
     <string name="name">Name</string>
     <string name="save_account_settings">Save Account Settings</string>
+    <string name="image_view_of_the_post">image view of the post</string>
+    <string name="add_description">Add Description</string>
+    <string name="post_blog">Post Blog</string>
+    <string name="add_post">Add Post</string>
 </resources>
