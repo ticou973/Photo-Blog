@@ -68,6 +68,7 @@ public class SetUpActivity extends AppCompatActivity {
         setUpToolbar = findViewById(R.id.setup_toolbar);
         setSupportActionBar(setUpToolbar);
         getSupportActionBar().setTitle("Account Setup");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //Initialisation de la DB
