@@ -36,6 +36,9 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+
+    //compressor
+    compile 'id.zelory:compressor:2.1.0'
 }
 
 
