@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-
-
         mCurrentUser = mAuth.getCurrentUser();
 
 
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
 
             current_user_id = mAuth.getCurrentUser().getUid();
-                    firebaseFirestore.collection("Users").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    firebaseFirestore.collection("users").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
@@ -84,20 +82,14 @@ public class MainActivity extends AppCompatActivity {
                                     startActivity(setUpIntent);
                                     finish();
 
-
                                 }
-
 
                             }else{
 
                                 String errorMessage = task.getException().getMessage();
                                 Toast.makeText(MainActivity.this, "Error : " + errorMessage, Toast.LENGTH_SHORT).show();
 
-
-
                             }
-
-
 
                         }
                     });
@@ -139,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
 
                 default:
                     return false;
-
-
 
         }
     }

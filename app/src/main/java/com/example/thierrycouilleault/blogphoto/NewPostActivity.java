@@ -65,7 +65,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         newPostImage = findViewById(R.id.new_post_image);
         newPostDesc = findViewById(R.id.new_post_desc);
-        newPostBtn = findViewById(R.id.add_post_btn);
+        newPostBtn = findViewById(R.id.post_btn);
         newPostProgress = findViewById(R.id.new_post_progress);
 
 

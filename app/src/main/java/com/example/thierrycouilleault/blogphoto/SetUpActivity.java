@@ -194,7 +194,6 @@ public class SetUpActivity extends AppCompatActivity {
 
 
 
-
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,11 +221,8 @@ public class SetUpActivity extends AppCompatActivity {
 
                 }
 
-
-
             }
         });
-
 
     }
 
@@ -257,7 +253,6 @@ public class SetUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()){
-
 
                     Toast.makeText(SetUpActivity.this, "The user settings are updated", Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent(SetUpActivity.this, MainActivity.class);
