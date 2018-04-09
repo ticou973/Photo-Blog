@@ -32,7 +32,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
@@ -173,7 +172,6 @@ public class NewPostActivity extends AppCompatActivity {
                                                     }
 
                                                     newPostProgress.setVisibility(View.INVISIBLE);
-
                                                 }
                                             });
 
@@ -181,11 +179,8 @@ public class NewPostActivity extends AppCompatActivity {
 
                                             Toast.makeText(NewPostActivity.this, "Error Thumbnails storage...", Toast.LENGTH_SHORT).show();
                                         }
-
                                     }
                                 });
-
-
 
                             }else{
 
@@ -197,11 +192,6 @@ public class NewPostActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-
-
-
-
             }
         });
 
@@ -230,15 +220,4 @@ public class NewPostActivity extends AppCompatActivity {
 
     }
 
-    public static String random() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(10);
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
-    }
 }
