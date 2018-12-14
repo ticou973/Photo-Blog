@@ -38,19 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         mEmailText = findViewById(R.id.reg_email);
         mPasswordText = findViewById(R.id.reg_password);
         loginProgress = findViewById(R.id.login_progress);
-
-
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
                 String loginEmail = mEmailText.getText().toString();
                 String loginPass = mPasswordText.getText().toString();
 
                 if (!TextUtils.isEmpty(loginEmail) && !TextUtils.isEmpty(loginPass)) {
-
                     loginProgress.setVisibility(View.VISIBLE);
 
                     mAuth.signInWithEmailAndPassword(loginEmail, loginPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -58,27 +53,19 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()){
-
                                 sendtoMain();
-
-
                             } else {
 
                                 String errorMessage = task.getException().getMessage();
                                 Toast.makeText(LoginActivity.this, "Error : " + errorMessage, Toast.LENGTH_SHORT).show();
                             }
-
                             loginProgress.setVisibility(View.INVISIBLE);
                         }
                     });
 
-
                 }else {
 
-
-
                 }
-
             }
         });
 
@@ -91,35 +78,22 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(regIntent);
             }
         });
-
-
     }
-
-
 
     @Override
     protected void onStart() {
         super.onStart();
 
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null){
-
             sendtoMain();
-
-        }
-
+            }
     }
 
-
     private void sendtoMain() {
-
         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(mainIntent);
         finish();
-
     }
-
-
 }

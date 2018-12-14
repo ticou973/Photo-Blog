@@ -42,61 +42,67 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setTitle("Photo Blog");
 
-        mainBottomNav = findViewById(R.id.mainBottomNav);
-
-        //FRAGMENTS
-
-        homeFragment = new HomeFragment();
-        notificationFragment = new NotificationFragment();
-        accountFragment = new AccountFragment();
-
-
-        mainBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-
-                    case R.id.bottom_action_home :
-
-                        replaceFragment(homeFragment);
-                        return true;
-
-                    case R.id.bottom_action_account:
-
-                        replaceFragment(accountFragment);
-                        return true;
-
-                    case R.id.bottom_action_notifications:
-                        replaceFragment(notificationFragment);
-                        return true;
-
-                        default: return false;
-
-                }
-
-            }
-        });
-
-        addPostBtn = findViewById(R.id.add_post_btn);
-        addPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
-                startActivity(newPostIntent);
-
-
-            }
-        });
-
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
+        if(mAuth.getCurrentUser()!=null) {
+
+            mainBottomNav = findViewById(R.id.mainBottomNav);
+
+            //FRAGMENTS
+
+            homeFragment = new HomeFragment();
+            notificationFragment = new NotificationFragment();
+            accountFragment = new AccountFragment();
+
+
+            replaceFragment(homeFragment);
+
+            mainBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()) {
+
+                        case R.id.bottom_action_home:
+
+                            replaceFragment(homeFragment);
+                            return true;
+
+                        case R.id.bottom_action_account:
+
+                            replaceFragment(accountFragment);
+                            return true;
+
+                        case R.id.bottom_action_notifications:
+                            replaceFragment(notificationFragment);
+                            return true;
+
+                        default:
+                            return false;
+
+                    }
+
+                }
+            });
+
+            addPostBtn = findViewById(R.id.add_post_btn);
+            addPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+                    startActivity(newPostIntent);
+                }
+            });
+
+        }
+
+
 
     }
 
@@ -182,10 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void logOut() {
 
-
         mAuth.signOut();
         sendToLogin();
-
 
     }
 

@@ -39,14 +39,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
         mRegLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 finish();
-
-
             }
         });
 
@@ -108,7 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 

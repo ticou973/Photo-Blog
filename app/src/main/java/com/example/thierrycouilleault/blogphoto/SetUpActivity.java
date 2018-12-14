@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,11 +55,9 @@ public class SetUpActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private String user_id;
     private Boolean isChanged = false;
-
-
     private FirebaseFirestore firebaseFirestore;
 
-
+    private static final String TAG="coucou";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +68,6 @@ public class SetUpActivity extends AppCompatActivity {
         setSupportActionBar(setUpToolbar);
         getSupportActionBar().setTitle("Account Setup");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         //Initialisation de la DB
         mAuth = FirebaseAuth.getInstance();
@@ -99,7 +97,6 @@ public class SetUpActivity extends AppCompatActivity {
                         String image = task.getResult().getString("image");
 
                         mainImageURI = Uri.parse(image);
-
                         settingsName.setText(name);
 
                         RequestOptions requestOptions = new RequestOptions();
@@ -107,25 +104,13 @@ public class SetUpActivity extends AppCompatActivity {
 
                         Glide.with(SetUpActivity.this).setDefaultRequestOptions(requestOptions).load(image).into(circleImageView);
 
-
-
-
                     }else{
-
                         Toast.makeText(SetUpActivity.this, "Data doesn't exist : " , Toast.LENGTH_LONG).show();
-
-
                     }
-
-
-
-
                 }else{
 
                     String error = task.getException().getMessage();
                     Toast.makeText(SetUpActivity.this, "Firestore retrieve Error : " + error, Toast.LENGTH_LONG).show();
-
-
                 }
 
                 setUpProgress.setVisibility(View.INVISIBLE);
@@ -145,14 +130,10 @@ public class SetUpActivity extends AppCompatActivity {
                 setUpProgress.setVisibility(View.VISIBLE);
 
                     if (isChanged) {
-
-
                         Toast.makeText(SetUpActivity.this, userName, Toast.LENGTH_SHORT).show();
 
                         user_id = mAuth.getCurrentUser().getUid();
-
                         setUpProgress.setVisibility(View.VISIBLE);
-
 
                         StorageReference image_path = storageReference.child("profile_images").child(user_id + ".jpg");
 
@@ -163,36 +144,20 @@ public class SetUpActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     storeFireStore(task, userName);
-
-
                                 } else {
-
                                     String error = task.getException().getMessage();
                                     Toast.makeText(SetUpActivity.this, "Error : " + error, Toast.LENGTH_LONG).show();
 
                                     setUpProgress.setVisibility(View.INVISIBLE);
                                 }
-
-
                             }
                         });
-
-
                     }else{
-
                         storeFireStore(null, userName);
-
-
                     }
-
-
                 }
-
             }
         });
-
-
-
 
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,23 +169,14 @@ public class SetUpActivity extends AppCompatActivity {
 
                     if(ContextCompat.checkSelfPermission(SetUpActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 
-
                         Toast.makeText(SetUpActivity.this, "Permission denied", Toast.LENGTH_LONG).show();
                         ActivityCompat.requestPermissions(SetUpActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
-
-
                     } else {
-
                         bringImagePicker();
-
                     }
-
                 }else {
-
                     bringImagePicker();
-
                 }
-
             }
         });
 
@@ -229,21 +185,11 @@ public class SetUpActivity extends AppCompatActivity {
     private void storeFireStore(Task<UploadTask.TaskSnapshot> task, String userName) {
 
         Uri download_uri;
-
-
         if (task != null){
-
             download_uri = task.getResult().getDownloadUrl();
-
-
         } else {
-
             download_uri = mainImageURI;
-
         }
-
-
-
         Map<String, String> userMap = new HashMap<>();
         userMap.put("name", userName);
         userMap.put("image", download_uri.toString());
@@ -275,7 +221,6 @@ public class SetUpActivity extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setAspectRatio(1,1)
                 .start(SetUpActivity.this);
-
     }
 
     @Override
@@ -286,17 +231,13 @@ public class SetUpActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 mainImageURI = result.getUri();
-
+                Log.d(TAG, "onActivityResult: "+mainImageURI);
                 circleImageView.setImageURI(mainImageURI);
-
                 isChanged = true;
-
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
         }
-
-
     }
 }

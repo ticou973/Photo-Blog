@@ -77,9 +77,6 @@ public class NewPostActivity extends AppCompatActivity {
         newPostBtn = findViewById(R.id.post_btn);
         newPostProgress = findViewById(R.id.new_post_progress);
 
-
-
-
         newPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,9 +86,6 @@ public class NewPostActivity extends AppCompatActivity {
                         .setMinCropResultSize(512,512) //pour inciter à une certaine qualité
                         .setAspectRatio(1,1)
                         .start(NewPostActivity.this);
-
-
-
             }
         });
 
@@ -117,7 +111,6 @@ public class NewPostActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
 
                                 //compression image pour Thumbnails
-
                                 File newImageFile = new File(postImageUri.getPath());
 
                                 try {
@@ -141,11 +134,9 @@ public class NewPostActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
-
                                         if (task.isSuccessful()) {
 
                                             String downloadthumbUri = task.getResult().getDownloadUrl().toString();
-
 
                                             Map<String, Object> postMap = new HashMap<>();
                                             postMap.put("image_url", downloadUri);
@@ -153,7 +144,6 @@ public class NewPostActivity extends AppCompatActivity {
                                             postMap.put("desc", desc);
                                             postMap.put("user_id", current_user_id);
                                             postMap.put("timestamp", FieldValue.serverTimestamp());
-
 
                                             firebaseFirestore.collection("Posts").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                 @Override
@@ -167,10 +157,7 @@ public class NewPostActivity extends AppCompatActivity {
                                                         finish();
 
                                                     } else {
-
-
                                                     }
-
                                                     newPostProgress.setVisibility(View.INVISIBLE);
                                                 }
                                             });
@@ -183,20 +170,13 @@ public class NewPostActivity extends AppCompatActivity {
                                 });
 
                             }else{
-
-
                                 newPostProgress.setVisibility(View.INVISIBLE);
-
                             }
-
                         }
                     });
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -209,15 +189,9 @@ public class NewPostActivity extends AppCompatActivity {
 
                 postImageUri = result.getUri();
                 newPostImage.setImageURI(postImageUri);
-
-
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
         }
-
-
     }
-
 }
