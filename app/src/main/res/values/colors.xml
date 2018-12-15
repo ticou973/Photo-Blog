@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#0069C0</color>
     <color name="colorAccent">#f44336</color>
     <color name="whiteTransparentHalf">#80FFFFFF</color>
+
+    <color name="likeBtnAccent">#f44336</color>
+    <color name="likeBtnGrey">#747474</color>
+
 </resources>
